@@ -1,3 +1,18 @@
+@import url("https://fonts.googleapis.com/css2?family=Aldrich&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.button {
+  @apply text-xl flex justify-center items-center p-6 w-8 h-8;
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+}
+.button--arithmetic {
+  @apply bg-numArith text-result drop-shadow-md;
+}
+.button-number {
+  @apply bg-number text-numberContent;
+}
+.button-result {
+  @apply bg-result text-number;
+}

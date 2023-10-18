@@ -1,6 +1,6 @@
 <template>
   <div class="">
-    <ToggleTheme />
-    <div class="bg-red-500 dark:bg-green-500">hola</div>
+    <ToggleTheme class="fixed top-4 right-4" />
+    <Calculator />
   </div>
-</template>
+</template>12

@@ -10,7 +10,17 @@ module.exports = {
   ],
   darkMode: "class",
   theme: {
-    extend: {},
+    colors: {
+      numArith: "#EDA61E",
+      number: "#FFCB40",
+      numberContent: "#CB7123",
+      result: "#865915",
+    },
+    extend: {
+      fontFamily: {
+        Aldrich: ["Aldrich", "sans-serif"],
+      },
+    },
   },
   plugins: [],
 };

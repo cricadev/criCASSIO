@@ -1,0 +1,161 @@
+<script setup lang="ts">
+import { ref, computed, watch, reactive, onMounted } from "vue";
+
+/* 1. Display area must show the current calculation and result
+  2. each number button must add the number to the display
+  3. each arithmetic button must add the symbol to the display
+  4. the clear button must clear the display and reset the calculator
+  5. the equal button must calculate the result
+  6. the decimal button must add a decimal point to the display
+
+*/
+onMounted(() => {
+  document.addEventListener("keydown", (e) => {
+    if (e.key >= "0" && e.key <= "9") {
+      handleButtonNumber({ target: { innerText: e.key } });
+    }
+    else if (e.key === "+" || e.key === "-" || e.key === "*" || e.key === "/") {
+      handleArithmeticButton({ target: { innerText: e.key } });
+    }
+    else if (e.key === ".") {
+      handleDecimalButton();
+    }
+    else if (e.key === "Enter") {
+      performCalculations();
+    }
+    else if (e.key === "Backspace") {
+      display.value = display.value.slice(0, -1);
+    }
+    else if (e.key === "Escape") {
+      clearAndResetCalculator();
+    }
+  });
+})
+const display = ref("");
+const arithmeticSymbols = ["+", "-", "*", "/", "."];
+const handleButtonNumber = (e) => {
+  if (display.value == "" && e.target.innerText == "0") {
+    return;
+  }
+  display.value += e.target.innerText;
+};
+const clearAndResetCalculator = () => {
+  display.value = "";
+};
+
+const lastArithmeticSymbol = ref(null);
+const lastButtonClicked = ref(null)
+const handleArithmeticButton = (e) => {
+  let value = e.target.innerText;
+  if (display.value === "") {
+    return;
+  }
+  else if (arithmeticSymbols.includes(display.value.slice(-1))) {
+    lastArithmeticSymbol.value = value;
+    display.value = display.value.slice(0, -1);
+    display.value += value;
+  }
+  else if (!isNaN(Number(display.value.slice(-1)))) {
+    lastArithmeticSymbol.value = null;
+    display.value += value;
+  }
+  else {
+    display.value += value
+  }
+};
+const performCalculations = () => {
+  if (display.value === "") {
+    return;
+  }
+  else if (lastArithmeticSymbol.value) {
+    display.value = eval(display.value.slice(0, -1));
+  }
+  else if (arithmeticSymbols.includes(display.value.slice(-1))) {
+    display.value = display.value.slice(0, -1);
+    display.value = eval(display.value);
+  }
+  else {
+    const result = eval(display.value);
+    if (result === Infinity || result === -Infinity) {
+      display.value = "Error: Division by zero";
+    }
+    else {
+      display.value = result;
+    }
+  }
+}
+
+const handleDecimalButton = () => {
+  if (display.value === "") {
+    display.value = "0.";
+  }
+  else if (arithmeticSymbols.includes(display.value.slice(-1))) {
+    return;
+  }
+  else {
+    let lastNumber = "";
+    for (let i = display.value.length - 1; i >= 0; i--) {
+      const char = display.value.charAt(i);
+      if (arithmeticSymbols.includes(char)) {
+        lastNumber = display.value.slice(i + 1);
+        break;
+      }
+    }
+    if (lastNumber.includes(".")) {
+      return;
+    }
+    else if (display.value.slice(-1) === ".") {
+      return;
+    }
+    else if (display.value.match(/\d+\.\d*$/)) {
+      return;
+    }
+    else {
+      display.value += ".";
+    }
+  }
+};
+</script>
+<template>
+  <div class="font-Aldrich bg-gradient-to-b from-number to-[##FFAD0D] h-screen w-full">
+    <div class="flex justify-center w-full gap-4">
+      <span class="text-lg font-normal ">Calculator</span>
+      <span class="text-lg font-normal ">Convertor</span>
+
+    </div>
+    <div class="display-area">
+      <div class="display">
+        <div class="display-text">
+          <span>{{ display }}</span>
+        </div>
+      </div>
+    </div>
+    <div class="grid-calculator">
+      <div class="clear-button">
+        <button class="button button--arithmetic" @click="clearAndResetCalculator">AC</button>
+      </div>
+      <div class="flex arithmetic-buttons">
+        <button class="button button--arithmetic" @click="handleArithmeticButton">+</button>
+        <button class="button button--arithmetic" @click="handleArithmeticButton">-</button>
+        <button class="button button--arithmetic" @click="handleArithmeticButton">*</button>
+        <button class="button button--arithmetic" @click="handleArithmeticButton">/</button>
+      </div>
+
+      <div class="numbers-buttons">
+        <button class="button button-number" @click="handleButtonNumber" v-for="number in 9" :key="number">{{ number
+        }}</button>
+
+      </div>
+
+      <div class="equal-button">
+        <button class="col-span-2 button" style="width: 50%;" @click="handleButtonNumber">0</button>
+        <div class="flex w-full h-full col-start-3 col-end-5 gap-2">
+          <button class="button button-number" @click="handleDecimalButton">.</button>
+          <button class="button button-result" @click="performCalculations">=</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</template>
+
