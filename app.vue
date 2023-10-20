@@ -1,7 +1,7 @@
 <template>
-  <div class="">
+  <div class="overflow-y-hidden">
     <NuxtLayout>
-      <ToggleTheme class="fixed z-30 top-4 right-4" />
+      <ToggleTheme class="absolute z-50 top-4 right-4" />
 
       <NuxtPage />
 

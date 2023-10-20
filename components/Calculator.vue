@@ -131,16 +131,20 @@ const handleDecimalButton = () => {
         </div>
       </div>
       <div class="grid-calculator">
-        <button class="col-start-1 col-end-3 button button--arithmetic" @click="clearAndResetCalculator">AC</button>
-        <button class="button button--arithmetic" @click="handleArithmeticButton">+</button>
-        <button class="button button--arithmetic" @click="handleArithmeticButton">-</button>
-        <button class="button button--arithmetic" @click="handleArithmeticButton">*</button>
-        <button class="button button--arithmetic" @click="handleArithmeticButton">/</button>
-        <button class="button button-number" @click="handleButtonNumber" v-for="number in 9" :key="number">{{ number
-        }}</button>
-        <button class="button button-number" @click="handleButtonNumber">0</button>
-        <button class="button button-number" @click="handleDecimalButton">.</button>
-        <button class="button button-result" @click="performCalculations">=</button>
+        <button class="number--ac button button--arithmetic" @click="clearAndResetCalculator">AC</button>
+        <button class="button button--arithmetic number--modulo" @click="handleArithmeticButton">%</button>
+        <button class="button button--arithmetic number--division" @click="handleArithmeticButton">/</button>
+        <button class="button button--arithmetic number--mul" @click="handleArithmeticButton">X</button>
+        <button class="button button--arithmetic number--minus" @click="handleArithmeticButton">-</button>
+        <button class="button button--arithmetic number--plus" @click="handleArithmeticButton">+</button>
+
+
+        <button class="button button-number" @click="handleButtonNumber" :class="'number--' + number" v-for="number in 9"
+          :key="number">{{ number
+          }}</button>
+        <button class="button button-number number--0" @click="handleButtonNumber">0</button>
+        <button class="button button-number number--dot" @click="handleDecimalButton">.</button>
+        <button class="button button-result number--equal" @click="performCalculations">=</button>
 
       </div>
     </div>
@@ -152,5 +156,95 @@ const handleDecimalButton = () => {
   background-image: url("/bg.png");
   background-size: cover;
   background-position: center;
+}
+
+.number--ac {
+  grid-column: 1 / 3;
+  grid-row: 1 / 3;
+}
+
+.number--7 {
+  grid-column: 1 / 3;
+  grid-row: 3 / 4;
+}
+
+.number--4 {
+  grid-column: 1 / 3;
+  grid-row: 5 / 7;
+}
+
+.number--1 {
+  grid-column: 1 / 3;
+  grid-row: 7 / 9;
+}
+
+.number--0 {
+  grid-column: 1 / 3;
+  grid-row: 9 / 11;
+}
+
+.number--8 {
+  grid-column: 3 / 5;
+  grid-row: 3 / 5;
+}
+
+.number--5 {
+  grid-column: 3 / 5;
+  grid-row: 5 / 7;
+}
+
+.number--2 {
+  grid-column: 3 / 5;
+  grid-row: 7 / 9;
+}
+
+.number--9 {
+  grid-column: 5 / 7;
+  grid-row: 3 / 5;
+}
+
+.number--6 {
+  grid-column: 5 / 7;
+  grid-row: 5 / 7;
+}
+
+.number--3 {
+  grid-column: 5 / 7;
+  grid-row: 7 / 9;
+}
+
+.number--dot {
+  grid-column: 5 / 7;
+  grid-row: 9 / 11;
+}
+
+.number--modulo {
+  grid-column: 3 / 5;
+  grid-row: 2 / 3;
+}
+
+.number--division {
+  grid-column: 5 / 7;
+  grid-row: 1 / 3;
+}
+
+.number--mul {
+  grid-column: 7 / 9;
+  grid-row: 2 / 3;
+}
+
+.number--minus {
+  grid-column: 7 / 9;
+  grid-row: 3 / 5;
+}
+
+.number--plus {
+  grid-column: 7 / 9;
+  grid-row: 5 / 7;
+}
+
+.number--equal {
+  grid-column: 7 / 9;
+  grid-row: 7 / 9;
 }
 </style>
