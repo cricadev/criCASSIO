@@ -2,21 +2,44 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+.wrapper-calculator {
+  @apply relative z-10  h-screen bg-gradient-to-b from-number to-gradStops dark:from-gradInitDark dark:to-gradEndDark font-Aldrich grid;
+  grid-template-rows: 10% 30% 60%;
+}
 
 .button {
-  @apply text-xl flex justify-center items-center p-6 w-24 h-24;
+  @apply text-xl flex justify-center items-center p-6 w-full h-full;
   clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
   filter: drop-shadow(0px 5px 5px #dd8b10);
-}
-.button--arithmetic {
-  @apply bg-numArith text-result dark:bg-numArithDark dark:text-numArithDarkContent;
 }
 .button-number {
   @apply bg-number text-numberContent dark:bg-numberDark dark:text-number;
 }
+.svg-path-number {
+  @apply fill-number  dark:fill-numberDark;
+}
+.svg-text-number {
+  @apply fill-numberContent dark:fill-number;
+}
+.button--arithmetic {
+  @apply bg-numArith text-result dark:bg-numArithDark dark:text-numArithDarkContent;
+}
+.svg-path-numArith {
+  @apply fill-numArith dark:fill-numArithDark;
+}
+.svg-text-numArith {
+  @apply fill-result dark:fill-numArithDarkContent;
+}
 .button-result {
   @apply bg-result text-number dark:text-numberDark dark:bg-resultDark;
 }
+.svg-path-result {
+  @apply fill-result dark:fill-resultDark;
+}
+.svg-text-result {
+  @apply fill-number dark:fill-numberDark;
+}
+
 .link {
   @apply text-lg font-normal text-[#BC8635] dark:text-[#AA8143];
 }
@@ -24,16 +47,13 @@
   @apply text-lg font-normal text-result dark:text-number;
 }
 .grid-calculator {
-  @apply grid px-8;
-  grid-template-columns: repeat(8, 1fr);
+  @apply grid ml-4;
+
+  grid-template-columns: repeat(7, 1fr);
   grid-template-rows: repeat(10, 1fr);
   place-items: center;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 60vh;
   width: 100%;
+  height: 60vh;
 }
 .icon-theme {
   @apply text-result dark:text-resultDark;
