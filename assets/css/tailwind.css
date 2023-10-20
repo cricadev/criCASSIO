@@ -25,6 +25,11 @@
   background-image: url("/bg.png");
   background-size: contain;
   background-position: center;
+  @media (min-width: 1024px) {
+    background-image: url("/bg-desktop.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
 }
 .grid-calculator {
   @apply grid ml-4 w-full max-w-md lg:col-start-2 lg:col-end-3 lg:row-start-2 lg:row-end-3;
