@@ -165,7 +165,7 @@ const handleDecimalButton = () => {
 
 .number--7 {
   grid-column: 1 / 3;
-  grid-row: 3 / 4;
+  grid-row: 3 / 5;
 }
 
 .number--4 {
@@ -185,17 +185,17 @@ const handleDecimalButton = () => {
 
 .number--8 {
   grid-column: 3 / 5;
-  grid-row: 3 / 5;
+  grid-row: 4 / 6;
 }
 
 .number--5 {
   grid-column: 3 / 5;
-  grid-row: 5 / 7;
+  grid-row: 6 / 8;
 }
 
 .number--2 {
   grid-column: 3 / 5;
-  grid-row: 7 / 9;
+  grid-row: 8 / 10;
 }
 
 .number--9 {
@@ -213,6 +213,11 @@ const handleDecimalButton = () => {
   grid-row: 7 / 9;
 }
 
+.number--equal {
+  grid-column: 7 / 9;
+  grid-row: 8 / 10;
+}
+
 .number--dot {
   grid-column: 5 / 7;
   grid-row: 9 / 11;
@@ -220,7 +225,7 @@ const handleDecimalButton = () => {
 
 .number--modulo {
   grid-column: 3 / 5;
-  grid-row: 2 / 3;
+  grid-row: 2 / 4;
 }
 
 .number--division {
@@ -230,21 +235,16 @@ const handleDecimalButton = () => {
 
 .number--mul {
   grid-column: 7 / 9;
-  grid-row: 2 / 3;
+  grid-row: 2 / 4;
 }
 
 .number--minus {
   grid-column: 7 / 9;
-  grid-row: 3 / 5;
+  grid-row: 4 / 6;
 }
 
 .number--plus {
   grid-column: 7 / 9;
-  grid-row: 5 / 7;
-}
-
-.number--equal {
-  grid-column: 7 / 9;
-  grid-row: 7 / 9;
+  grid-row: 6 / 8;
 }
 </style>

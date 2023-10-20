@@ -4,7 +4,7 @@
 @tailwind utilities;
 
 .button {
-  @apply text-xl flex justify-center items-center p-6 w-20 h-20;
+  @apply text-xl flex justify-center items-center p-6 w-24 h-24;
   clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
   filter: drop-shadow(0px 5px 5px #dd8b10);
 }
@@ -24,14 +24,16 @@
   @apply text-lg font-normal text-result dark:text-number;
 }
 .grid-calculator {
-  @apply grid;
+  @apply grid px-8;
   grid-template-columns: repeat(8, 1fr);
   grid-template-rows: repeat(10, 1fr);
   place-items: center;
   position: absolute;
   bottom: 0;
   left: 0;
+  right: 0;
   height: 60vh;
+  width: 100%;
 }
 .icon-theme {
   @apply text-result dark:text-resultDark;
