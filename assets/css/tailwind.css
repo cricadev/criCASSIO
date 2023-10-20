@@ -6,13 +6,26 @@
 .button {
   @apply text-xl flex justify-center items-center p-6 w-8 h-8;
   clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+  filter: drop-shadow(0px 5px 5px #dd8b10);
 }
 .button--arithmetic {
-  @apply bg-numArith text-result drop-shadow-md;
+  @apply bg-numArith text-result dark:bg-numArithDark dark:text-numArithDarkContent;
 }
 .button-number {
-  @apply bg-number text-numberContent;
+  @apply bg-number text-numberContent dark:bg-numberDark dark:text-number;
 }
 .button-result {
-  @apply bg-result text-number;
+  @apply bg-result text-number dark:text-numberDark dark:bg-resultDark;
+}
+.link {
+  @apply text-lg font-normal text-[#BC8635] dark:text-[#AA8143];
+}
+.link--active {
+  @apply text-lg font-normal text-result dark:text-number;
+}
+.grid-calculator {
+  @apply grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+  place-items: center;
 }

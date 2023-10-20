@@ -8,5 +8,11 @@ export default defineNuxtConfig({
   ],
   colorMode: {
     classSuffix: ''
+  },
+  routeRules: {
+    '/': {
+      redirect: '/calculator'
+    }
+
   }
 })

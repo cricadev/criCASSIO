@@ -1,6 +1,10 @@
 <template>
   <div class="">
-    <ToggleTheme class="fixed top-4 right-4" />
-    <Calculator />
+    <NuxtLayout>
+      <ToggleTheme class="fixed z-30 top-4 right-4" />
+
+      <NuxtPage />
+
+    </NuxtLayout>
   </div>
-</template>12
+</template>

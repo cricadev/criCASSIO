@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ref, computed, watch, reactive, onMounted } from "vue";
 
 /* 1. Display area must show the current calculation and result
   2. each number button must add the number to the display
@@ -117,45 +116,41 @@ const handleDecimalButton = () => {
 };
 </script>
 <template>
-  <div class="font-Aldrich bg-gradient-to-b from-number to-[##FFAD0D] h-screen w-full">
-    <div class="flex justify-center w-full gap-4">
-      <span class="text-lg font-normal ">Calculator</span>
-      <span class="text-lg font-normal ">Convertor</span>
-
-    </div>
-    <div class="display-area">
-      <div class="display">
-        <div class="display-text">
-          <span>{{ display }}</span>
+  <div class="">
+    <div
+      class="relative z-10 w-full h-screen bg-gradient-to-b from-number to-gradStops dark:from-gradInitDark dark:to-gradEndDark font-Aldrich">
+      <div class="flex justify-center w-full gap-4">
+        <NuxtLink class="link" active-class="link--active" to="/calculator">Calculator</NuxtLink>
+        <NuxtLink active-class="link--active" class="link" to="/convertor">Convertor</NuxtLink>
+      </div>
+      <div class="display-area ">
+        <div class="display">
+          <div class="display-text">
+            <span>{{ display }}</span>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="grid-calculator">
-      <div class="clear-button">
-        <button class="button button--arithmetic" @click="clearAndResetCalculator">AC</button>
-      </div>
-      <div class="flex arithmetic-buttons">
+      <div class="grid-calculator">
+        <button class="col-start-1 col-end-3 button button--arithmetic" @click="clearAndResetCalculator">AC</button>
         <button class="button button--arithmetic" @click="handleArithmeticButton">+</button>
         <button class="button button--arithmetic" @click="handleArithmeticButton">-</button>
         <button class="button button--arithmetic" @click="handleArithmeticButton">*</button>
         <button class="button button--arithmetic" @click="handleArithmeticButton">/</button>
-      </div>
-
-      <div class="numbers-buttons">
         <button class="button button-number" @click="handleButtonNumber" v-for="number in 9" :key="number">{{ number
         }}</button>
+        <button class="button button-number" @click="handleButtonNumber">0</button>
+        <button class="button button-number" @click="handleDecimalButton">.</button>
+        <button class="button button-result" @click="performCalculations">=</button>
 
       </div>
-
-      <div class="equal-button">
-        <button class="col-span-2 button" style="width: 50%;" @click="handleButtonNumber">0</button>
-        <div class="flex w-full h-full col-start-3 col-end-5 gap-2">
-          <button class="button button-number" @click="handleDecimalButton">.</button>
-          <button class="button button-result" @click="performCalculations">=</button>
-        </div>
-      </div>
-
     </div>
+    <div class="absolute top-0 left-0 z-20 w-full h-full pointer-events-none bg-image"></div>
   </div>
 </template>
-
+<style scoped>
+.bg-image {
+  background-image: url("/bg.png");
+  background-size: cover;
+  background-position: center;
+}
+</style>
