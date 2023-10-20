@@ -27,6 +27,9 @@ module.exports = {
       fontFamily: {
         Aldrich: ["Aldrich", "sans-serif"],
       },
+      screens: {
+        "3xl": "1921px",
+      },
     },
   },
   plugins: [],
