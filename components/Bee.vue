@@ -107,9 +107,8 @@ const moveBee = (time) => {
   }
   requestAnimationFrame(moveBee);
 };
-watchEffect(() => {
-  requestAnimationFrame(moveBee)
-
+watch(bee, () => {
+  requestAnimationFrame(moveBee);
 })
 </script>
 
