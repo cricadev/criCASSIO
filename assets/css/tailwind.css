@@ -17,6 +17,30 @@
     width: clamp(5rem, 25vw + 1rem, 12rem);
   }
 }
+
+.dark #svg {
+  filter: drop-shadow(-5px 2px 5px #363123);
+}
+.svg-path-number {
+  @apply fill-number  dark:fill-numberDark;
+}
+.svg-text-number {
+  @apply fill-numberContent dark:fill-number;
+}
+
+.svg-path-numArith {
+  @apply fill-numArith dark:fill-numArithDark;
+}
+.svg-text-numArith {
+  @apply fill-result dark:fill-numArithDarkContent;
+}
+
+.svg-path-result {
+  @apply fill-result dark:fill-resultDark;
+}
+.svg-text-result {
+  @apply fill-number dark:fill-numberDark;
+}
 .display-area {
   @apply flex flex-col text-end justify-end pb-8 pr-8 gap-4 place-self-end  lg:row-start-1 lg:row-end-2 lg:col-start-2 lg:col-end-3 lg:pr-24;
 }
@@ -40,10 +64,6 @@
   height: 60vh;
 }
 
-.dark #svg {
-  filter: drop-shadow(-5px 2px 5px #363123);
-}
-
 .button {
   @apply text-xl flex justify-center items-center p-6 w-full h-full;
   clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
@@ -51,30 +71,6 @@
 }
 .button-number {
   @apply bg-number text-numberContent dark:bg-numberDark dark:text-number;
-}
-.svg-path-number {
-  @apply fill-number  dark:fill-numberDark;
-}
-.svg-text-number {
-  @apply fill-numberContent dark:fill-number;
-}
-.button--arithmetic {
-  @apply bg-numArith text-result dark:bg-numArithDark dark:text-numArithDarkContent;
-}
-.svg-path-numArith {
-  @apply fill-numArith dark:fill-numArithDark;
-}
-.svg-text-numArith {
-  @apply fill-result dark:fill-numArithDarkContent;
-}
-.button-result {
-  @apply bg-result text-number dark:text-numberDark dark:bg-resultDark;
-}
-.svg-path-result {
-  @apply fill-result dark:fill-resultDark;
-}
-.svg-text-result {
-  @apply fill-number dark:fill-numberDark;
 }
 
 .link {

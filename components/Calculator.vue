@@ -50,7 +50,6 @@ const clearAndResetCalculator = () => {
 };
 
 const lastArithmeticSymbol = ref(null);
-const lastButtonClicked = ref(null)
 const handleArithmeticButton = (arith) => {
   let value = arith;
   if (display.value === "") {

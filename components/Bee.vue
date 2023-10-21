@@ -50,7 +50,7 @@ const moveBee = (time) => {
   // The elapsed variable represents the time elapsed between the current frame and the previous frame, in milliseconds. 
   const elapsed = time - lastTime;
 
-  // we calculate the distance the fish has moved multiplying the speed by the elapsed time and we divided by 1000 so we convert the elapsed time from miliseconds to seconds. the elapsed variable is in milliseconds, while the speed variable is in pixels per second, so we need to convert the elapsed time to seconds to get the correct distance that the fish should move
+  // we calculate the distance the Bee has moved multiplying the speed by the elapsed time and we divided by 1000 so we convert the elapsed time from miliseconds to seconds. the elapsed variable is in milliseconds, while the speed variable is in pixels per second, so we need to convert the elapsed time to seconds to get the correct distance that the Bee should move
   const distance = speed.value * elapsed / 1000;
 
   //.
@@ -59,9 +59,9 @@ const moveBee = (time) => {
   x.value += distance * directionX;
   y.value += distance * directionY;
 
-  // we can only apply styles if fishEl exists right?
+  // we can only apply styles if Bee exists right?
   if (bee.value) {
-    // with this statement we prevent the fish X coordinate going farther than the left side of the screen 
+    // with this statement we prevent the Bee X coordinate going farther than the left side of the screen 
     if (x.value < 0) {
       x.value = 0;
       directionX = 1;
