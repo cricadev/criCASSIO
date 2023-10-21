@@ -128,6 +128,7 @@ const numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 </script>
 <template>
   <div class="overflow-x-hidden overflow-y-hidden wrapper-calculator">
+    <Bee />
     <div class="bg-image"></div>
 
     <div class="display-area">
