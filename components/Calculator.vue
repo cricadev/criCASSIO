@@ -24,7 +24,7 @@ onMounted(() => {
       performCalculations();
     }
     else if (e.key === "Backspace") {
-      display.value = display.value.slice(0, -1);
+      handleBackspace()
     }
     else if (e.key === "Escape") {
       clearAndResetCalculator();
@@ -32,6 +32,10 @@ onMounted(() => {
     }
   });
 })
+const handleBackspace = () => {
+  display.value = display.value.slice(0, -1);
+
+}
 const result = ref("");
 const display = ref("");
 const arithmeticSymbols = ["+", "-", "*", "/", "."];
@@ -147,12 +151,14 @@ const numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
           d="M6.2141 51.8749C4.07051 48.1621 4.07051 43.5877 6.2141 39.8749L25.2234 6.94981C27.367 3.237 31.3285 0.949814 35.6157 0.949814H73.6343C77.9215 0.949814 81.883 3.237 84.0266 6.94981L103.036 39.8749C105.179 43.5877 105.179 48.1621 103.036 51.8749L84.0266 84.7999C81.883 88.5128 77.9215 90.7999 73.6343 90.7999H35.6157C31.3285 90.7999 27.367 88.5128 25.2234 84.7999L6.2141 51.8749Z" />
         <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" class="svg-text-numArith">AC</text>
       </svg>
-      <svg id="svg" @click="handleArithmeticButton('%')" class="number--modulo" xmlns="http://www.w3.org/2000/svg"
+      <svg id="svg" @click="handleBackspace" class="number--modulo" xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 109 99" fill="none">
         <path class="svg-path-numArith"
           d="M6.2141 51.8749C4.07051 48.1621 4.07051 43.5877 6.2141 39.8749L25.2234 6.94981C27.367 3.237 31.3285 0.949814 35.6157 0.949814H73.6343C77.9215 0.949814 81.883 3.237 84.0266 6.94981L103.036 39.8749C105.179 43.5877 105.179 48.1621 103.036 51.8749L84.0266 84.7999C81.883 88.5128 77.9215 90.7999 73.6343 90.7999H35.6157C31.3285 90.7999 27.367 88.5128 25.2234 84.7999L6.2141 51.8749Z" />
 
-        <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" class="svg-text-numArith">%</text>
+        <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" class="svg-text-numArith">
+          DEL
+        </text>
       </svg>
 
       <svg id="svg" @click="handleArithmeticButton('/')" class="number--division" xmlns="http://www.w3.org/2000/svg"
